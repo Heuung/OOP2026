@@ -38,6 +38,5 @@ public class hw1 {
         }
     }
 }
+```
 ![Alt homework11](./images/hw1.png)
-### HomeWork2
-```java

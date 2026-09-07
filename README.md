@@ -40,3 +40,28 @@ public class hw1 {
 }
 ```
 ![Alt homework11](./images/hw1.png)
+
+### HomeWork2
+```java
+public class hw2 {
+    public static void main(String[] args) {
+        int first = 1;
+        int second = 1;
+
+        for (int i = 1; i <= 20; i++) {
+            System.out.print(first);
+
+            if (i < 20) {
+                System.out.print(" ");
+            }
+
+            int next = first + second;
+            first = second;
+            second = next;
+        }
+
+        System.out.println();
+    }
+}
+```
+![Alt homework11](./images/hw2.png)

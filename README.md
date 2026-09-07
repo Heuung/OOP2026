@@ -3,12 +3,39 @@
 ```java
 public class hw1 {
     public static void main(String[] args) {
-        int i, j;
-        for(i=0; i<10; i++) {
-            for(j=0; j<=i; j++) {
+        for (int i = 1; i <= 4; i++) {
+            // Pattern 1: left-aligned increasing triangle
+            for (int j = 1; j <= i; j++) {
+                System.out.print("#");
+            }
+            for (int j = 1; j <= 7 - i; j++) {
                 System.out.print(" ");
             }
-            for(; j<=10; j++) {
+
+            // Pattern 2: right-aligned decreasing triangle
+            for (int j = 1; j < i; j++) {
+                System.out.print(" ");
+            }
+            for (int j = 1; j <= 5 - i; j++) {
+                System.out.print("#");
+            }
+            for (int j = 1; j <= 3; j++) {
+                System.out.print(" ");
+            }
+
+            // Pattern 3: left-aligned increasing triangle
+            for (int j = 1; j <= i; j++) {
+                System.out.print("#");
+            }
+            for (int j = 1; j <= 7 - i; j++) {
+                System.out.print(" ");
+            }
+
+            // Pattern 4: right-aligned decreasing triangle
+            for (int j = 1; j < i; j++) {
+                System.out.print(" ");
+            }
+            for (int j = 1; j <= 5 - i; j++) {
                 System.out.print("#");
             }
             System.out.println();

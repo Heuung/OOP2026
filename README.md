@@ -39,7 +39,7 @@ public class hw1 {
     }
 }
 ```
-![Alt homework11](./images/hw1.png)
+![Alt homework11](./images/)
 
 ### HomeWork2
 ```java

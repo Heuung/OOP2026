@@ -1,2 +1,20 @@
 # OOP2026
-객체지향프로그래밍 수업
+### HomeWork1
+```java
+public class hw1 {
+    public static void main(String[] args) {
+        int i, j;
+        for(i=0; i<10; i++) {
+            for(j=0; j<=i; j++) {
+                System.out.print(" ");
+            }
+            for(; j<=10; j++) {
+                System.out.print("#");
+            }
+            System.out.println();
+        }
+    }
+}
+
+### HomeWork2
+```java

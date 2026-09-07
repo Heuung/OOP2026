@@ -38,6 +38,6 @@ public class hw1 {
         }
     }
 }
-<img width="450" height="142" alt="Image" src="https://github.com/user-attachments/assets/b6634ac0-29cf-4227-9995-10dc2f982e9d" />
+![Alt homework11](./images/hw1.png)
 ### HomeWork2
 ```java

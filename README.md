@@ -1,5 +1,6 @@
 # OOP2026
-### HomeWork1
+## HomeWork1
+-------------
 ```java
 public class hw1 {
     public static void main(String[] args) {
@@ -41,7 +42,8 @@ public class hw1 {
 ```
 ![Alt homework11](./images/hw1.png)
 
-### HomeWork2
+## HomeWork2
+-------------
 ```java
 public class hw2 {
     public static void main(String[] args) {
@@ -66,7 +68,8 @@ public class hw2 {
 ```
 ![Alt homework11](./images/hw2.png)
 
-### HomeWork3
+## HomeWork3
+-------------
 ```java
 public class hw3 {
     public static void main(String[] args) {
@@ -88,7 +91,8 @@ public class hw3 {
 ```
 ![Alt homework11](./images/hw3.png)
 
-### HomeWork4
+## HomeWork4
+-------------
 ```java
 public class hw4 {
     public static void main(String[] args) {
@@ -106,7 +110,8 @@ public class hw4 {
 ```
 ![Alt homework11](./images/hw4.png)
 
-### HomeWork5
+## HomeWork5
+-------------
 ```java
 public class hw5 {
     public static void main(String[] args) {
@@ -133,7 +138,8 @@ public class hw5 {
 ```
 ![Alt homework11](./images/hw5.png)
 
-### HomeWork6
+## HomeWork6
+-------------
 ```java
 public class hw6 {
     public static void main(String[] args) {
@@ -160,7 +166,8 @@ public class hw6 {
 ```
 ![Alt homework11](./images/hw6.png)
 
-### HomeWork7
+## HomeWork7
+-------------
 ```java
 public class hw7 {
     public static void main(String[] args) {
@@ -192,7 +199,8 @@ public class hw7 {
 ```
 ![Alt homework11](./images/hw7.png)
 
-### HomeWork8
+## HomeWork8
+-------------
 ```java
 public class hw8 {
     public static void main(String[] args) {

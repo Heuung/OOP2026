@@ -222,3 +222,86 @@ public class hw8 {
 }
 ```
 ![Alt homework11](./images/hw8.png)
+
+## HomeWork9
+-------------
+```java
+public class hw9 {
+    public static void main(String[] args) {
+        int[] decimalIntegers = {257, 128};
+        String[] binaryIntegers = {"101010", "1110"};
+        double[] decimalNumbers = {
+            1.75, 1.625, 1.5625, 1.875,
+            13.875, 45.875, 1.9, 1.1
+        };
+
+        System.out.println("[10진법 -> 2진법]");
+        for (int number : decimalIntegers) {
+            System.out.println("(" + number + ")_10 = ("
+                    + decimalIntegerToBinary(number) + ")_2");
+        }
+
+        System.out.println("\n[2진법 -> 10진법]");
+        for (String number : binaryIntegers) {
+            System.out.println("(" + number + ")_2 = ("
+                    + binaryToDecimal(number) + ")_10");
+        }
+
+        System.out.println("\n[10진 소수 -> 2진 소수]");
+        for (double number : decimalNumbers) {
+            System.out.println("(" + number + ")_10 = ("
+                    + decimalToBinary(number, 16) + ")_2");
+        }
+    }
+
+    static String decimalIntegerToBinary(int number) {
+        if (number == 0) {
+            return "0";
+        }
+
+        String binary = "";
+        while (number > 0) {
+            binary = (number % 2) + binary;
+            number /= 2;
+        }
+        return binary;
+    }
+
+    static int binaryToDecimal(String binary) {
+        int decimal = 0;
+        for (int i = 0; i < binary.length(); i++) {
+            decimal = decimal * 2 + (binary.charAt(i) - '0');
+        }
+        return decimal;
+    }
+
+    static String decimalToBinary(double number, int maxFractionDigits) {
+        int integerPart = (int) number;
+        double fractionPart = number - integerPart;
+        StringBuilder result = new StringBuilder(
+                decimalIntegerToBinary(integerPart));
+
+        if (fractionPart == 0) {
+            return result.toString();
+        }
+
+        result.append('.');
+        int count = 0;
+
+        while (fractionPart > 1.0e-12 && count < maxFractionDigits) {
+            fractionPart *= 2;
+            int bit = (int) fractionPart;
+            result.append(bit);
+            fractionPart -= bit;
+            count++;
+        }
+
+        if (fractionPart > 1.0e-12) {
+            result.append("...");
+        }
+
+        return result.toString();
+    }
+}
+```
+![Alt homework11](./images/hw9.png)

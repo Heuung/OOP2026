@@ -305,3 +305,51 @@ public class hw9 {
 }
 ```
 ![Alt homework11](./images/hw9.png)
+
+## HomeWork10
+--------------
+```java
+public class hw10 {
+    public static void main(String[] args) {
+        if (args.length != 4) {
+            System.out.println(
+                    "Usage: hw10 array_count max_value bin_size display_scale");
+            return;
+        }
+
+        int arrayCount = Integer.parseInt(args[0]);
+        int maxValue = Integer.parseInt(args[1]);
+        int binSize = Integer.parseInt(args[2]);
+        int displayScale = Integer.parseInt(args[3]);
+
+        if (arrayCount <= 0 || maxValue <= 0
+                || binSize <= 0 || displayScale <= 0) {
+            System.out.println("All arguments must be positive integers.");
+            return;
+        }
+
+        int[] data = new int[arrayCount];
+        int binCount = (maxValue + binSize - 1) / binSize;
+        int[] histogram = new int[binCount];
+
+        for (int i = 0; i < data.length; i++) {
+            data[i] = (int) (Math.random() * maxValue);
+            histogram[data[i] / binSize]++;
+        }
+
+        for (int i = 0; i < histogram.length; i++) {
+            int start = i * binSize;
+            int end = Math.min(start + binSize - 1, maxValue - 1);
+
+            System.out.print(start + "~" + end + "\t");
+
+            int barLength = histogram[i] / displayScale;
+            for (int j = 0; j < barLength; j++) {
+                System.out.print("#");
+            }
+            System.out.println();
+        }
+    }
+}
+```
+![Alt homework11](./images/hw10.png)

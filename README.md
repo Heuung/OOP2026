@@ -40,7 +40,7 @@ public class hw1 {
     }
 }
 ```
-![Alt homework11](./images/hw1.png)
+![Alt homework1](./images/hw1.png)
 
 ## HomeWork2
 -------------
@@ -66,7 +66,7 @@ public class hw2 {
     }
 }
 ```
-![Alt homework11](./images/hw2.png)
+![Alt homework2](./images/hw2.png)
 
 ## HomeWork3
 -------------
@@ -89,7 +89,7 @@ public class hw3 {
     }
 }
 ```
-![Alt homework11](./images/hw3.png)
+![Alt homework3](./images/hw3.png)
 
 ## HomeWork4
 -------------
@@ -108,7 +108,7 @@ public class hw4 {
     }
 }
 ```
-![Alt homework11](./images/hw4.png)
+![Alt homework4](./images/hw4.png)
 
 ## HomeWork5
 -------------
@@ -136,7 +136,7 @@ public class hw5 {
     }
 }
 ```
-![Alt homework11](./images/hw5.png)
+![Alt homework5](./images/hw5.png)
 
 ## HomeWork6
 -------------
@@ -164,7 +164,7 @@ public class hw6 {
     }
 }
 ```
-![Alt homework11](./images/hw6.png)
+![Alt homework6](./images/hw6.png)
 
 ## HomeWork7
 -------------
@@ -197,7 +197,7 @@ public class hw7 {
     }
 }
 ```
-![Alt homework11](./images/hw7.png)
+![Alt homework7](./images/hw7.png)
 
 ## HomeWork8
 -------------
@@ -221,7 +221,7 @@ public class hw8 {
     }
 }
 ```
-![Alt homework11](./images/hw8.png)
+![Alt homework8](./images/hw8.png)
 
 ## HomeWork9
 -------------
@@ -304,7 +304,7 @@ public class hw9 {
     }
 }
 ```
-![Alt homework11](./images/hw9.png)
+![Alt homework9](./images/hw9.png)
 
 ## HomeWork10
 --------------
@@ -352,7 +352,7 @@ public class hw10 {
     }
 }
 ```
-![Alt homework11](./images/hw10.png)
+![Alt homework10](./images/hw10.png)
 
 ## HomeWork11
 -------------
@@ -409,4 +409,4 @@ public class hw11 {
 
 ## Homework12
 -------------
-![Alt homework11](./images/hw12.png)
+![Alt homework12](./images/hw12.png)

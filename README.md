@@ -353,3 +353,60 @@ public class hw10 {
 }
 ```
 ![Alt homework11](./images/hw10.png)
+
+## HomeWork11
+-------------
+```java
+public class hw11 {
+    public static void main(String[] args){
+        int data[] = new int[100];
+        int n = data.length;
+        double sum = 0.0;
+        double product = 1.0;
+        double reciprocalSum = 0.0;
+
+        System.out.print("mean");
+        for (int i = 0; i < n; i++) {
+            data[i] = (int) (Math.random() * 100) + 1;
+            sum += data[i];
+            product *= data[i];
+            reciprocalSum += 1.0 / data[i];
+            System.out.print(" " + data[i]);
+        }
+        System.out.println();
+
+        double arithmeticMean = sum / n;
+        double geometricMean = Math.pow(product, 1.0 / n);
+        double harmonicMean = n / reciprocalSum;
+
+        for (int i = 0; i < n - 1; i++) {
+            int minIndex = i;
+            for (int j = i + 1; j < n; j++) {
+                if (data[j] < data[minIndex]) {
+                    minIndex = j;
+                }
+            }
+            int temp = data[i];
+            data[i] = data[minIndex];
+            data[minIndex] = temp;
+        }
+
+        double median;
+        if (n % 2 == 0) {
+            median = (data[n / 2 - 1] + data[n / 2]) / 2.0;
+        } else {
+            median = data[n / 2];
+        }
+
+        System.out.println("arithmetic mean = " + arithmeticMean);
+        System.out.println("geometric mean = " + geometricMean);
+        System.out.println("harmonic mean = " + harmonicMean);
+        System.out.println("median = " + median);
+    }
+}
+```
+![Alt homework11](./images/hw11.png)
+
+## Homework12
+-------------
+![Alt homework11](./images/hw12.png)

@@ -410,3 +410,32 @@ public class hw11 {
 ## Homework12
 -------------
 ![Alt homework12](./images/hw12.png)
+
+## HomeWork13
+-------------
+```java
+import java.util.Scanner;
+
+public class hw13 {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        while (true) {
+            String inputString = scanner.nextLine();
+            System.out.println(inputString);
+
+            String[] arrOfStr = inputString.split(" ");
+            for (String a : arrOfStr)
+                System.out.println(a);
+
+            if (arrOfStr.length == 3 && arrOfStr[1].equals("+")) {
+                System.out.println(
+                    Integer.parseInt(arrOfStr[0])
+                    + Integer.parseInt(arrOfStr[2])
+                );
+            }
+        }
+    }
+}
+```
+![Alt homework13](./images/hw13.png)

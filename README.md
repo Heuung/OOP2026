@@ -439,3 +439,107 @@ public class hw13 {
 }
 ```
 ![Alt homework13](./images/hw13.png)
+
+##HomeWork14
+------------
+```java
+// Numbers.java 파일
+public class Numbers {
+    int num[];
+	Numbers(int num[]) {
+		if (num == null || num.length == 0)
+			throw new IllegalArgumentException("Data must not be empty.");
+		this.num = num;
+	}
+
+	double getTotal() {
+		double sum=0;
+		for(int i=0; i<num.length; i++) sum+=num[i];
+		return sum;
+	}
+
+	double getArithmaticMean() {
+		return getTotal()/num.length;
+	}
+
+	double getHarmonicMean() {
+		double sum = 0;
+		for (int i = 0; i < num.length; i++) {
+			if (num[i] <= 0) return Double.NaN;
+			sum += 1.0 / num[i];
+		}
+		return num.length / sum;
+	}
+
+	double getGeometricMean() {
+
+		double sum = 0;
+		boolean hasZero = false;
+		for (int i = 0; i < num.length; i++) {
+			if (num[i] < 0) return Double.NaN;
+			if (num[i] == 0) hasZero = true;
+			else sum += Math.log(num[i]);
+		}
+		if (hasZero) return 0;
+		return Math.exp(sum / num.length);
+	}
+
+	double getMedian() {
+		sorting();
+		int middle = num.length / 2;
+		if (num.length % 2 == 1) return num[middle];
+		return ((double) num[middle - 1] + num[middle]) / 2.0;
+	}
+
+	void sorting() {
+		java.util.Arrays.sort(num);
+	}
+
+	void drawHistogram(int start, int end, int binCount) {
+		if (start >= end || binCount <= 0)
+			throw new IllegalArgumentException("Invalid histogram range or bin count.");
+		int[] frequency = new int[binCount];
+		double width = ((double) end - start) / binCount;
+
+		for (int i = 0; i < num.length; i++) {
+			if (num[i] >= start && num[i] < end) {
+				int index = (int) ((num[i] - (double) start) / width);
+				frequency[Math.min(index, binCount - 1)]++;
+			}
+		}
+		for (int i = 0; i < binCount; i++) {
+			System.out.printf("[%6.2f, %6.2f) : %3d ",
+					start + i * width, start + (i + 1) * width, frequency[i]);
+			for (int j = 0; j < frequency[i]; j++) System.out.print("*");
+			System.out.println();
+		}
+	}
+
+	void display() {
+		System.out.printf("%3d :", num.length);		
+		for(int i=0; i<num.length; i++) 
+            System.out.printf("%3d ", num[i]);
+		System.out.println();
+	}
+}
+
+//NumbersTest.java 파일
+public class NumbersTest {
+    public static void main(String[] args) {
+		int size=100;
+		int data[]=new int[size];
+
+		for(int i=0; i<size; i++) 
+            data[i]=(int)(Math.random()*100);
+
+		Numbers obj = new Numbers(data);
+		obj.display();
+        
+		System.out.printf("Arithmetic Mean : %5.2f\n", obj.getArithmaticMean());
+		System.out.printf("Geometric Mean : %5.2f\n", obj.getGeometricMean());		
+		obj.drawHistogram(0,100,10);
+	}
+
+}
+```
+![Alt homework14](./images/hw14.png)

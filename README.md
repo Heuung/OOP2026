@@ -543,3 +543,273 @@ public class NumbersTest {
 }
 ```
 ![Alt homework14](./images/hw14.png)
+
+##HomeWork15
+-------------
+```java
+#C2048
+public class C2048 {
+    int value[][] = new int[4][4];
+
+    C2048() {
+        init();
+    }
+
+    void init() {
+        value = new int[4][4];
+        update();
+        update();
+    }
+
+    void update() {
+        int count = 0;
+        for (int i = 0; i < 4; i++)
+            for (int j = 0; j < 4; j++)
+                if (value[i][j] == 0) count++;
+        if (count == 0) return;
+
+        int target = (int) (Math.random() * count);
+        for (int i = 0; i < 4; i++) {
+            for (int j = 0; j < 4; j++) {
+                if (value[i][j] == 0) {
+                    if (target == 0) {
+                        value[i][j] = ((int) (Math.random() * 2) + 1) * 2;
+                        return;
+                    }
+                    target--;
+                }
+            }
+        }
+    }
+
+    void left() {
+        boolean changed = false;
+        for (int i = 0; i < 4; i++) {
+            int[] line = new int[4];
+            int count = 0;
+            for (int j = 0; j < 4; j++) {
+                if (value[i][j] != 0) line[count++] = value[i][j];
+            }
+
+            int[] result = new int[4];
+            int index = 0;
+            for (int j = 0; j < count; j++) {
+                if (j + 1 < count && line[j] == line[j + 1]) {
+                    result[index++] = line[j] * 2;
+                    j++;
+                } else {
+                    result[index++] = line[j];
+                }
+            }
+
+            for (int j = 0; j < 4; j++) {
+                if (value[i][j] != result[j]) changed = true;
+                value[i][j] = result[j];
+            }
+        }
+        if (changed) update();
+        display();
+    }
+
+    void right() {
+        boolean changed = false;
+        for (int i = 0; i < 4; i++) {
+            int[] line = new int[4];
+            int count = 0;
+
+            for (int j = 0; j < 4; j++) {
+                if (value[i][3 - j] != 0) line[count++] = value[i][3 - j];
+            }
+
+            int[] result = new int[4];
+            int index = 0;
+            for (int j = 0; j < count; j++) {
+                if (j + 1 < count && line[j] == line[j + 1]) {
+                    result[index++] = line[j] * 2;
+                    j++;
+                } else {
+                    result[index++] = line[j];
+                }
+            }
+
+            for (int j = 0; j < 4; j++) {
+                if (value[i][3 - j] != result[j]) changed = true;
+                value[i][3 - j] = result[j];
+            }
+        }
+        if (changed) update();
+        display();
+    }
+
+    void up() {
+        boolean changed = false;
+        for (int i = 0; i < 4; i++) {
+            int[] line = new int[4];
+            int count = 0;
+            for (int j = 0; j < 4; j++) {
+                if (value[j][i] != 0) line[count++] = value[j][i];
+            }
+
+            int[] result = new int[4];
+            int index = 0;
+            for (int j = 0; j < count; j++) {
+                if (j + 1 < count && line[j] == line[j + 1]) {
+                    result[index++] = line[j] * 2;
+                    j++;
+                } else {
+                    result[index++] = line[j];
+                }
+            }
+
+            for (int j = 0; j < 4; j++) {
+                if (value[j][i] != result[j]) changed = true;
+                value[j][i] = result[j];
+            }
+        }
+        if (changed) update();
+        display();
+    }
+
+    void down() {
+        boolean changed = false;
+        for (int i = 0; i < 4; i++) {
+            int[] line = new int[4];
+            int count = 0;
+            for (int j = 0; j < 4; j++) {
+                if (value[3 - j][i] != 0) line[count++] = value[3 - j][i];
+            }
+
+            int[] result = new int[4];
+            int index = 0;
+            for (int j = 0; j < count; j++) {
+                if (j + 1 < count && line[j] == line[j + 1]) {
+                    result[index++] = line[j] * 2;
+                    j++;
+                } else {
+                    result[index++] = line[j];
+                }
+            }
+
+            for (int j = 0; j < 4; j++) {
+                if (value[3 - j][i] != result[j]) changed = true;
+                value[3 - j][i] = result[j];
+            }
+        }
+        if (changed) update();
+        display();
+    }
+
+    void display() {
+        for (int i = 0; i < 4; i++) {
+            for (int j = 0; j < 4; j++)
+                System.out.printf("%5d ", value[i][j]);
+            System.out.println();
+        }
+        System.out.println();
+    }
+}
+
+#C2048Player
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import javax.swing.*;
+
+public class C2048Player extends JPanel {
+    private final C2048 obj = new C2048();
+    private final JLabel[][] tiles = new JLabel[4][4];
+    private final JLabel message = new JLabel();
+
+    C2048Player() {
+        setLayout(new BorderLayout(12, 12));
+        setBackground(new Color(0xFAF8EF));
+        setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
+
+        JLabel title = new JLabel("2048");
+        title.setFont(new Font("SansSerif", Font.BOLD, 40));
+        add(title, BorderLayout.NORTH);
+
+        JPanel board = new JPanel(new GridLayout(4, 4, 10, 10));
+        board.setBackground(new Color(0xBBADA0));
+        board.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+        board.setPreferredSize(new Dimension(440, 440));
+        for (int i = 0; i < 4; i++) {
+            for (int j = 0; j < 4; j++) {
+                tiles[i][j] = new JLabel("", SwingConstants.CENTER);
+                tiles[i][j].setOpaque(true);
+                board.add(tiles[i][j]);
+            }
+        }
+        add(board, BorderLayout.CENTER);
+
+        JPanel footer = new JPanel(new BorderLayout(8, 8));
+        footer.setOpaque(false);
+        message.setFont(new Font("Malgun Gothic", Font.PLAIN, 13));
+        footer.add(message, BorderLayout.NORTH);
+        JButton restart = new JButton("다시 시작 (R)");
+        restart.setFont(new Font("Malgun Gothic", Font.PLAIN, 14));
+        restart.setFocusable(false);
+        restart.addActionListener(e -> { obj.init(); refresh(); });
+        footer.add(restart, BorderLayout.SOUTH);
+        add(footer, BorderLayout.SOUTH);
+
+        bind("LEFT", obj::left);
+        bind("A", obj::left);
+        bind("RIGHT", obj::right);
+        bind("D", obj::right);
+        bind("UP", obj::up);
+        bind("W", obj::up);
+        bind("DOWN", obj::down);
+        bind("S", obj::down);
+        bind("R", obj::init);
+        refresh();
+    }
+
+    private void bind(String key, Runnable action) {
+        getInputMap(WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke(key), key);
+        getActionMap().put(key, new AbstractAction() {
+            public void actionPerformed(ActionEvent e) {
+                action.run();
+                refresh();
+            }
+        });
+    }
+
+    private void refresh() {
+        boolean canMove = false;
+        boolean won = false;
+        int[] colors = {0xCDC1B4, 0xEEE4DA, 0xEDE0C8, 0xF2B179,
+                0xF59563, 0xF67C5F, 0xF65E3B, 0xEDCF72,
+                0xEDCC61, 0xEDC850, 0xEDC53F, 0xEDC22E};
+        for (int i = 0; i < 4; i++) {
+            for (int j = 0; j < 4; j++) {
+                int n = obj.value[i][j];
+                int colorIndex = n == 0 ? 0 : Integer.numberOfTrailingZeros(n);
+                JLabel tile = tiles[i][j];
+                tile.setText(n == 0 ? "" : String.valueOf(n));
+                tile.setBackground(new Color(colorIndex < colors.length ? colors[colorIndex] : 0x3C3A32));
+                tile.setForeground(new Color(n <= 4 ? 0x776E65 : 0xFFFFFF));
+                tile.setFont(new Font("SansSerif", Font.BOLD, n < 1024 ? 36 : n < 16384 ? 28 : 20));
+                if (n >= 2048) won = true;
+                if (n == 0 || (i < 3 && n == obj.value[i + 1][j])
+                        || (j < 3 && n == obj.value[i][j + 1])) canMove = true;
+            }
+        }
+        if (!canMove) message.setText("게임 종료! 다시 시작하려면 R을 누르세요.");
+        else if (won) message.setText("2048 달성! 계속 플레이할 수 있습니다.");
+        else message.setText("방향키 또는 W/A/S/D로 이동하세요. (Enter 필요 없음)");
+    }
+
+    public static void main(String[] args) {
+        SwingUtilities.invokeLater(() -> {
+            JFrame frame = new JFrame("2048");
+            frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            frame.setContentPane(new C2048Player());
+            frame.pack();
+            frame.setResizable(false);
+            frame.setLocationRelativeTo(null);
+            frame.setVisible(true);
+        });
+    }
+}
+```
+![Alt homework15](./images/hw15.png)
